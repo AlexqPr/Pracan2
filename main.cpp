@@ -6,36 +6,16 @@ int Random(int min, int max){
     return min + rand() % (max - min); //первые числа трех массивов (8,24,28)
 }
 
-//void func5(int** matrix, int n, int m){
-//    int sum = 0;
-//    for (int i = 0; i < n; ++i) {
-//        for (int j = 0; j < m; ++j) {
-//            sum += matrix[i][j];
-//        }
-//    }
-//}
-
-//void matrix(){
-//    int n,m;
-//    cout << "Введите размер первого измерения:";
-//    cin >> n;
-//    cout << "Введите размер второго измерения:";
-//    cin >> m;
-////    int matrica[n][m];
-//    int** matrica = reinterpret_cast<int **>((int *) ::malloc(n * m * sizeof(int)));
-//    for (int i = 0; i < n; ++i) {
-//        for (int j = 0; j < m; ++j) {
-//            matrica[i][j] = Random(1,101);
-//        }
-//    }
-//    for (int i = 0; i < n; ++i) {
-//        for (int j = 0; j < m; ++j) {
-//            cout << matrica[i][j] << "  ";
-//        }
-//        cout << endl;
-//    }
-//    func5(matrica,n,m);
-//}
+void func5(int** matrix, int n, int m){
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            sum += matrix[i][j];
+        }
+    }
+    cout << "Сумма всей матрицы:" << sum << endl;
+    delete matrix;
+}
 
 void matrix(){
     int n,m;
@@ -43,7 +23,13 @@ void matrix(){
     cin >> n;
     cout << "Введите размер второго измерения:";
     cin >> m;
-    int matrica[n][m];
+    int** matrica  = new int*[n];
+//    int** matrica = reinterpret_cast<int **>((int *) ::malloc(n * m * sizeof(int)));
+for(int i = 0 ; i < n; i++){
+    matrica[i] = new int[m];
+}
+
+
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
             matrica[i][j] = Random(1,101);
@@ -55,14 +41,35 @@ void matrix(){
         }
         cout << endl;
     }
-    int sum = 0;
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            sum += matrica[i][j];
-        }
-    }
-    cout << "Сумма матрицы:" << sum << endl;
+    func5(matrica,n,m);
 }
+
+//void matrix(){
+//    int n,m;
+//    cout << "Введите размер первого измерения:";
+//    cin >> n;
+//    cout << "Введите размер второго измерения:";
+//    cin >> m;
+//    int matrica[n][m];
+//    for (int i = 0; i < n; ++i) {
+//        for (int j = 0; j < m; ++j) {
+//            matrica[i][j] = Random(1,101);
+//        }
+//    }
+//    for (int i = 0; i < n; ++i) {
+//        for (int j = 0; j < m; ++j) {
+//            cout << matrica[i][j] << "  ";
+//        }
+//        cout << endl;
+//    }
+//    int sum = 0;
+//    for (int i = 0; i < n; ++i) {
+//        for (int j = 0; j < m; ++j) {
+//            sum += matrica[i][j];
+//        }
+//    }
+//    cout << "Сумма матрицы:" << sum << endl;
+//}
 
 void naimensh(){
     int size;
